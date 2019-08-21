@@ -1,0 +1,28 @@
+查看状态  git status
+提交到缓存区： git add 文件名
+提交到版本： git commit -m "提交说明"
+回退版本： git reset 版本号
+查看提交日志： git log
+查看命令历史： git reflog
+查看修改内容： git diff （如果提交到缓存区，就不能比较文本）
+
+工作区文本撤销： git checkout -- 文件名
+缓存区文件撤销： git HEAD -- 文件名
+版本库撤销：只能用回退  git reset 版本号
+
+删除文件： git rm 文件名  只要提交到版本库的文件不怕被误删
+
+推到远程仓库： git push origin master
+关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git
+
+从远程仓库克隆一个仓库  git clone 仓库地址(支持不同协议的有 ssh https)
+
+
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除分支：git branch -d <name>
+
+
