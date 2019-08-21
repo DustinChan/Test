@@ -26,5 +26,32 @@
 删除分支：git branch -d <name>
 
 带图分支的查看：git log --graph --pretty=oneline --abbrev-commit
+合并时禁用 Fast forward  模式(这种模式会合并的时候会丢失分支信息)  所以在合并的时候可以采用  git merge --no-ff  这样就能在历史分支中看出信息
 
+工作没有完成时，可以临时保存 git stash
+恢复有两种方法：git stash list(查看有哪些stash) 
+		 1.git stash apply(stash 内容不删除)  如果有多个stash  可以用 git stash apply@{编号} 选择
+		 2.git stash pop (stash 内容删除)
 
+在master分支上修复的bug，想要合并到当前dev分支，可以用git cherry-pick <commit>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
+
+如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
+
+查看远程库信息，使用git remote -v；
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+rebase操作可以把本地未push的分叉提交历史整理成直线；
+rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
+
+标签：
+	命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+	命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+	命令git tag可以查看所有标签。
+	命令git push origin <tagname>可以推送一个本地标签；
+	命令git push origin --tags可以推送全部未推送过的本地标签；
+	命令git tag -d <tagname>可以删除一个本地标签；
+	命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
